@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kreator Planów Treningowych</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="page-header">
+        <h1>Kreator Planów Treningowych</h1>
+        <p>
+          Twórz plany, dodawaj wiele ćwiczeń i automatycznie licz objętość,
+          średnie RPE oraz czas sesji.
+        </p>
+      </header>
+
+      <div id="feedbackBanner" class="banner hidden" role="alert"></div>
+
+      <section class="card">
+        <h2 id="formHeading">Nowy plan treningowy</h2>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="planTitle">Nazwa planu</label>
+            <input type="text" id="planTitle" placeholder="np. Push Day A" />
+          </div>
+          <div class="field">
+            <label for="muscleGroup">Partia mięśniowa</label>
+            <input
+              type="text"
+              id="muscleGroup"
+              placeholder="np. Chest & Triceps"
+              value="Full Body"
+            />
+          </div>
+        </div>
+
+        <hr class="divider" />
+
+        <h3>Dodaj ćwiczenie do planu</h3>
+        <div class="exercise-inputs">
+          <div class="field field-wide">
+            <label for="exerciseName">Nazwa ćwiczenia</label>
+            <input
+              type="text"
+              id="exerciseName"
+              placeholder="np. Bench Press"
+            />
+          </div>
+          <div class="field">
+            <label for="exerciseSets">Serie</label>
+            <input type="number" id="exerciseSets" value="4" min="1" />
+          </div>
+          <div class="field">
+            <label for="exerciseReps">Powtórzenia</label>
+            <input type="number" id="exerciseReps" value="8" min="1" />
+          </div>
+          <div class="field">
+            <label for="exerciseWeight">Ciężar (kg)</label>
+            <input
+              type="number"
+              id="exerciseWeight"
+              value="60"
+              min="0"
+              step="0.5"
+            />
+          </div>
+          <div class="field">
+            <label for="exerciseRpe">RPE (1–10)</label>
+            <input
+              type="number"
+              id="exerciseRpe"
+              value="8"
+              min="1"
+              max="10"
+              step="0.5"
+            />
+          </div>
+          <div class="field">
+            <label for="exerciseRest">Przerwa (s)</label>
+            <input type="number" id="exerciseRest" value="120" min="0" />
+          </div>
+        </div>
+
+        <button type="button" id="addExerciseBtn" class="btn btn-secondary">
+          + Dodaj ćwiczenie do listy
+        </button>
+
+        <div class="draft-section">
+          <h3>Ćwiczenia w aktualnym planie (<span id="draftCount">0</span>)</h3>
+          <ul id="draftExerciseList" class="draft-list"></ul>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="savePlanBtn" class="btn btn-primary">
+            Zapisz plan treningowy
+          </button>
+          <button type="button" id="cancelEditBtn" class="btn btn-ghost hidden">
+            Anuluj edycję
+          </button>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="plans-header">
+          <h2>Zapisane plany</h2>
+          <div class="filter-bar">
+            <input
+              type="text"
+              id="filterMuscleInput"
+              placeholder="Filtruj po partii..."
+            />
+            <button type="button" id="filterBtn" class="btn btn-secondary">
+              Filtruj
+            </button>
+            <button type="button" id="clearFilterBtn" class="btn btn-ghost">
+              Wyczyść
+            </button>
+          </div>
+        </div>
+
+        <div id="savedPlansContainer" class="plans-grid"></div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
